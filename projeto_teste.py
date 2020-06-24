@@ -9,9 +9,14 @@ totalAlunos = 0
 totalAlunosMasculino = 0
 totalAlunosFeminino = 0
 totalAlunosAprovados = 0
+totalAlunosAprovadosM = 0
+totalAlunosAprovadosF = 0
 totalAlunosReprovados = 0
+totalAlunosReprovadosM = 0
+totalAlunosReprovadosF = 0
 totalAlunosExame = 0
-
+totalAlunosExameM = 0
+totalAlunosExameF = 0
 # Evitar erro de divisão por 0
 def percentual(v1, v2):
     try:
@@ -53,16 +58,29 @@ while (continuar == 'S'):
 
     if media<4.0:
         totalAlunosReprovados +=1
+        if(sexo == 'M'):
+            totalAlunosReprovadosM +=1
+        else:
+            totalAlunosReprovadosF +=1
     elif media<7.0:
         totalAlunosExame +=1
+        if(sexo == 'M'):
+            totalAlunosExameM +=1
+        else:
+            totalAlunosExameF +=1
     else:
         totalAlunosAprovados +=1
+        if(sexo == 'M'):
+            totalAlunosAprovadosM +=1
+        else:
+            totalAlunosAprovadosF +=1
     
-    continuar = input('Deseja continuar o sistema(S/N) ?').upper()
+    continuar = input('Deseja continuar o sistema(S/N) ?: ').upper()
     while (continuar != 'S' and continuar != 'N'):
         print('Opção Inválida')
         continuar = input('Informe S-Sim ou N-Não: ').upper()
 else:
+    print('=-=' * 20)
     print ('\n\nApresentar os resultados finais\n\n')
     print('Total de alunos cadastrados:',totalAlunos)
     print ('\n\nPorcentagem dos alunos\n\n')
@@ -73,11 +91,11 @@ else:
     print('Porcentagem de alunos do sexo Feminino: ', percentual(totalAlunosFeminino,totalAlunos), '%')
     print('Porcentagem de alunos do sexo Masculino: ', percentual(totalAlunosMasculino,totalAlunos), '%')
     print ('\nValores Absolutos\n')
-    print('Total de alunos sexo Feminino Aprovados:', percentual(totalAlunosFeminino,totalAlunosAprovados), '%')
-    print('Total de alunos sexo Masculino Aprovados:', percentual(totalAlunosMasculino,totalAlunosAprovados), '%')
-    print ('\n------------------------------------------------------\n')
-    print('Total de alunos sexo Feminino Exame:', percentual(totalAlunosFeminino,totalAlunosExame), '%')
-    print('Total de alunos sexo Masculino Exame:', percentual(totalAlunosMasculino,totalAlunosExame), '%')
-    print ('\n------------------------------------------------------\n')
-    print('Total de alunos sexo Feminino Reprovados:', percentual(totalAlunosFeminino,totalAlunosReprovados), '%')
-    print('Total de alunos sexo Masculino Reprovados:', percentual(totalAlunosMasculino,totalAlunosReprovados), '%')
+    print('Total de alunos sexo Feminino Aprovados:', totalAlunosAprovadosF)
+    print('Total de alunos sexo Masculino Aprovados:', totalAlunosAprovadosM)
+    print('=-=' * 20)
+    print('Total de alunos sexo Feminino Exame:', totalAlunosExameF)
+    print('Total de alunos sexo Masculino Exame:', totalAlunosExameM)
+    print('=-=' * 20)
+    print('Total de alunos sexo Feminino Reprovados:', totalAlunosReprovadosF)
+    print('Total de alunos sexo Masculino Reprovados:', totalAlunosReprovadosM)
